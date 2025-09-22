@@ -5,6 +5,7 @@ vim.opt.relativenumber = true
 -- Search
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
+vim.opt.incsearch = true
 
 vim.opt.cursorline = true
 
@@ -18,3 +19,9 @@ vim.opt.expandtab = true
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 vim.opt.background = "dark"
+vim.opt.scrolloff = 8
+
+-- Undo dir settings
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = false
