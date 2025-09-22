@@ -19,28 +19,25 @@ return {
                         },
                     },
                 },
-                -- enable syntax highlighting
+                -- syntax highlighting
                 highlight = {
                     enable = true,
                 },
-                -- enable indentation
+                -- indentation
                 indent = { enable = true },
-                -- enable autotagging (w/ nvim-ts-autotag plugin)
+                -- autotagging (w/ nvim-ts-autotag plugin)
                 autotag = { enable = true },
                 -- ensure these language parsers are installed
                 ensure_installed = {
                     "json",
                     "python",
-                    "javascript",
                     "yaml",
-                    "html",
                     "css",
                     "markdown",
                     "markdown_inline",
                     "bash",
                     "lua",
                     "vim",
-                    "vimdoc",
                     "c",
                     "dockerfile",
                     "gitignore",

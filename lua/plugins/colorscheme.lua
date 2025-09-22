@@ -1,10 +1,12 @@
 return {
-  "wtfox/jellybeans.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {}, -- Optional
-  config = function ()
-	  vim.cmd[[colorscheme jellybeans-muted]]
-  end
+    "tiagovla/tokyodark.nvim",
+    opts = {
+        -- custom options here
+    },
+    config = function(_, opts)
+        require("tokyodark").setup(opts) -- calling setup is optional
+        vim.cmd [[colorscheme tokyodark]]
+    end,
 }
+
 
