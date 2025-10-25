@@ -14,3 +14,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- Clear Highlighted search results
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
