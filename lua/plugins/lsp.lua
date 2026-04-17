@@ -88,13 +88,6 @@ return {
                         }
                     }
                 end,
-                ["tailwindcss"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.tailwindcss.setup({
-                        capabilities = capabilities,
-                        filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte", "heex" },
-                    })
-                end,
             }
         })
 
@@ -113,13 +106,19 @@ return {
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
-                { name = "copilot", group_index = 2 },
+                { name = "copilot", enable = false, group_index = 2 },
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
             }, {
                 { name = 'buffer' },
             })
         })
+
+        vim.lsp.handlers["window/showMessage"] = function(_, result, ctx)
+            local client = vim.lsp.get_client_by_id(ctx.client_id)
+            if client and client.name == "copilot" then return end
+            vim.notify(result.message, result.type)
+        end
 
         vim.diagnostic.config({
             -- update_in_insert = true,
