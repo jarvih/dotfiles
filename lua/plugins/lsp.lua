@@ -28,6 +28,7 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
+                python = { "black" },
             }
         })
         local cmp = require('cmp')
@@ -47,10 +48,25 @@ return {
                 "gopls",
             },
             handlers = {
-                function(server_name) -- default handler (optional)
+                function(server_name)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
+                end,
+
+                ["pylsp"] = function()
+                    require("lspconfig").pylsp.setup({
+                        capabilities = capabilities,
+                        settings = {
+                            pylsp = {
+                                plugins = {
+                                    black = { enabled = false },
+                                    autopep8 = { enabled = false },
+                                    yapf = { enabled = false },
+                                },
+                            },
+                        },
+                    })
                 end,
 
                 zls = function()
@@ -106,7 +122,7 @@ return {
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
-                { name = "copilot", enable = false, group_index = 2 },
+                { name = "copilot", group_index = 2 },
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
             }, {
@@ -118,6 +134,14 @@ return {
             local client = vim.lsp.get_client_by_id(ctx.client_id)
             if client and client.name == "copilot" then return end
             vim.notify(result.message, result.type)
+        end
+
+        local orig_notify = vim.notify
+        vim.notify = function(msg, level, opts)
+            if type(msg) == "string" and msg:match("Client copilot quit with exit code 143") then
+                return
+            end
+            orig_notify(msg, level, opts)
         end
 
         vim.diagnostic.config({
