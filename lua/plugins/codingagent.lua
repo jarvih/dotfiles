@@ -36,18 +36,20 @@ local function setup_quit_with_panel()
   })
 end
 
--- Shared: auto-open when the project marker file is found in cwd
-local function setup_auto_open(marker_file, open_cmd)
+-- Shared: auto-open when any of the marker files is found in cwd
+local function setup_auto_open(marker_files, open_cmd)
+  if type(marker_files) == "string" then marker_files = { marker_files } end
   local function maybe_open()
-    if vim.fn.filereadable(vim.fn.getcwd() .. "/" .. marker_file) == 1 then
-      vim.defer_fn(function()
-        vim.cmd(open_cmd)
-      end, 500)
+    local cwd = vim.fn.getcwd()
+    for _, f in ipairs(marker_files) do
+      if vim.fn.filereadable(cwd .. "/" .. f) == 1 then
+        vim.defer_fn(function() vim.cmd(open_cmd) end, 500)
+        return
+      end
     end
   end
-  vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
-    callback = maybe_open,
-  })
+  vim.api.nvim_create_autocmd("DirChanged", { callback = maybe_open })
+  maybe_open()
 end
 
 local tool = ai_panel_plugin()
@@ -60,6 +62,7 @@ return {
   {
     "coder/claudecode.nvim",
     enabled = tool == "claude",
+    event = "VimEnter",
     dependencies = { "folke/snacks.nvim" },
     opts = {
       terminal = {
@@ -77,7 +80,7 @@ return {
     },
     config = function(_, opts)
       require("claudecode").setup(opts)
-      setup_auto_open("CLAUDE.md", "ClaudeCode")
+      setup_auto_open("CLAUDE.md", "ClaudeCode --continue")
       setup_quit_with_panel()
     end,
   },
@@ -90,13 +93,14 @@ return {
   {
     "sudo-tee/opencode.nvim",
     enabled = tool == "opencode",
+    event = "VimEnter",
     opts = {},
     keys = {
       { "<leader>ac", "<cmd>OpencodeToggle<cr>", desc = "Toggle OpenCode" },
     },
     config = function(_, opts)
       require("opencode").setup(opts)
-      setup_auto_open("opencode.json", "OpencodeOpen")
+      setup_auto_open({"CLAUDE.md", "AGENT.md"}, "OpencodeOpen")
       setup_quit_with_panel()
     end,
   },
