@@ -17,3 +17,6 @@ end)
 
 -- Clear Highlighted search results
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
+
+-- Exit terminal mode
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })

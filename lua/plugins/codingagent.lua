@@ -17,6 +17,25 @@ local function ai_panel_plugin()
   return vim.env.AI_TOOL or "claude"
 end
 
+-- Close terminal windows when quitting the last normal window, so vim exits cleanly
+local function setup_quit_with_panel()
+  vim.api.nvim_create_autocmd("QuitPre", {
+    callback = function()
+      local normal_wins = vim.tbl_filter(function(w)
+        local cfg = vim.api.nvim_win_get_config(w)
+        return cfg.relative == "" and vim.bo[vim.api.nvim_win_get_buf(w)].buftype ~= "terminal"
+      end, vim.api.nvim_list_wins())
+      if #normal_wins <= 1 then
+        for _, w in ipairs(vim.api.nvim_list_wins()) do
+          if vim.bo[vim.api.nvim_win_get_buf(w)].buftype == "terminal" then
+            pcall(vim.api.nvim_win_close, w, true)
+          end
+        end
+      end
+    end,
+  })
+end
+
 -- Shared: auto-open when the project marker file is found in cwd
 local function setup_auto_open(marker_file, open_cmd)
   local function maybe_open()
@@ -54,11 +73,12 @@ return {
       },
     },
     keys = {
-      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude Code" },
+      { "<leader>ac", "<cmd>ClaudeCodeFocus --continue<cr>", desc = "Toggle Claude Code" },
     },
     config = function(_, opts)
       require("claudecode").setup(opts)
       setup_auto_open("CLAUDE.md", "ClaudeCode")
+      setup_quit_with_panel()
     end,
   },
 
@@ -77,6 +97,7 @@ return {
     config = function(_, opts)
       require("opencode").setup(opts)
       setup_auto_open("opencode.json", "OpencodeOpen")
+      setup_quit_with_panel()
     end,
   },
 }
