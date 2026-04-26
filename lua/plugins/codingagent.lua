@@ -65,6 +65,7 @@ return {
     event = "VimEnter",
     dependencies = { "folke/snacks.nvim" },
     opts = {
+      terminal_cmd = "sh -c 'claude --continue || claude'",
       terminal = {
         provider = "snacks",
         snacks_win_opts = {
@@ -76,11 +77,11 @@ return {
       },
     },
     keys = {
-      { "<leader>ac", "<cmd>ClaudeCodeFocus --continue<cr>", desc = "Toggle Claude Code" },
+      { "<leader>ac", "<cmd>ClaudeCodeFocus<cr>", desc = "Toggle Claude Code" },
     },
     config = function(_, opts)
       require("claudecode").setup(opts)
-      setup_auto_open("CLAUDE.md", "ClaudeCode --continue")
+      setup_auto_open("CLAUDE.md", "ClaudeCode")
       setup_quit_with_panel()
     end,
   },
