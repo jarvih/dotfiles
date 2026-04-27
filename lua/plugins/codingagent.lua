@@ -97,11 +97,11 @@ return {
     event = "VimEnter",
     opts = {},
     keys = {
-      { "<leader>ac", "<cmd>OpencodeToggle<cr>", desc = "Toggle OpenCode" },
+      { "<leader>ac", "<cmd>Opencode<cr>", desc = "Toggle OpenCode" },
     },
     config = function(_, opts)
       require("opencode").setup(opts)
-      setup_auto_open({"CLAUDE.md", "AGENT.md"}, "OpencodeOpen")
+      setup_auto_open({"CLAUDE.md", "AGENT.md"}, "Opencode")
       setup_quit_with_panel()
     end,
   },
