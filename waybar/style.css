@@ -7,23 +7,25 @@
 }
 
 window#waybar {
-    background: #1a1b26;
+    background: transparent;
     color: #c0caf5;
 }
 
 #workspaces {
-    margin: 0 4px;
+    margin: 4 2px;
+    padding: 0 12px;
+    border-radius: 6px;
+    background: #292e42;
 }
 
 #workspaces button {
     padding: 0 8px;
     color: #565f89;
-    background: transparent;
     border-bottom: 2px solid transparent;
 }
 
 #workspaces button:hover {
-    background: #292e42;
+    background: #e0af68;
     color: #c0caf5;
 }
 
