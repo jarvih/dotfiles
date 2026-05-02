@@ -4,8 +4,8 @@
     "height": 32,
     "spacing": 2,
 
-    "modules-left":   ["sway/workspaces", "sway/mode"],
-    "modules-center": [],
+    "modules-left":   ["sway/mode"],
+    "modules-center": ["sway/workspaces"],
     "modules-right":  ["network", "pulseaudio", "battery", "clock", "tray"],
 
     "sway/workspaces": {
@@ -18,12 +18,12 @@
     },
 
     "clock": {
-        "format": "⏱ {:%a %d %b  %H:%M}",
+        "format": "⏱ {:%d.%m. %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
     },
 
     "battery": {
-        "format": "{icon} {capacity}%",
+        "format": "{capacity}% {icon}",
         "format-charging": "↑ {capacity}%",
         "format-icons": ["▁", "▂", "▄", "▆", "█"],
         "states": {
@@ -34,7 +34,7 @@
     },
 
     "network": {
-        "format-wifi": "↝ {essid} ({signalStrength}%)",
+        "format-wifi": "↝ {essid}",
         "format-ethernet": "⇄ {ipaddr}",
         "format-disconnected": "✗ disconnected",
         "tooltip-format-wifi": "{ifname}: {ipaddr}/{cidr}\n{gwaddr} — {signaldBm}dBm",
