@@ -5,18 +5,18 @@
     "spacing": 2,
 
     "modules-left":   ["sway/mode"],
-    "modules-center": ["sway/workspaces"],
+    "modules-center": ["sway/scratchpad", "sway/workspaces"],
     "modules-right":  ["network", "pulseaudio", "battery", "clock", "tray"],
 
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-	 "persistent-workspaces": {
-        	"1": [],
-        	"2": [],
-        	"3": [],
-        	"4": [],
-    	}
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+        }
     },
 
     "sway/mode": {
@@ -46,7 +46,13 @@
         "tooltip-format-wifi": "{ifname}: {ipaddr}/{cidr}\n{gwaddr} — {signaldBm}dBm",
         "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}"
     },
-
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
     "pulseaudio": {
         "format": "♪ {volume}%",
         "format-muted": "✕ muted",
