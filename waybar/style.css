@@ -61,8 +61,8 @@ window#waybar {
     color: #c0caf5;
 }
 
-#clock      { color: #7dcfff; }
-#network    { color: #7aa2f7; }
+#clock      { color: #e0af68; }
+#network    { color: #e0af68; }
 #pulseaudio { color: #e0af68; }
 #tray       { color: #c0caf5; }
 
