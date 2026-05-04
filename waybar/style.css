@@ -39,15 +39,13 @@ window#waybar {
     border-bottom: 2px solid #f7768e;
 }
 
+#scratchpad.empty,
 #scratchpad {
     margin: 4 2px;
     padding: 0 12px;
     border-radius: 6px;
     background: #f7768e;
     color: #292e42;
-}
-
-#scratchpad.empty {
 }
 
 #clock,
