@@ -1,0 +1,103 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    drun-display-format: "{name}";
+    hide-scrollbar: true;
+    font:           "JetBrainsMono Nerd Font Mono 10";
+}
+
+* {
+    bg:           #1a1b26;
+    bg-alt:       #292e42;
+    fg:           #c0caf5;
+    accent:       #7aa2f7;
+
+    background-color: transparent;
+    text-color:   @fg;
+}
+
+window {
+    background-color: @bg;
+    border:       2px solid;
+    border-color: @accent;
+    border-radius: 12px;
+    padding:      20px;
+    width:        720px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [inputbar, listview];
+    spacing: 12px;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius: 8px;
+    padding:      8px 12px;
+    children:     [prompt, entry];
+}
+
+prompt {
+    background-color: transparent;
+    padding:      0 8px 0 0;
+}
+
+entry {
+    background-color: transparent;
+    placeholder:  "Search apps...";
+}
+
+listview {
+    background-color: transparent;
+    columns:      6;
+    lines:        4;
+    fixed-columns: true;
+    fixed-height: false;
+    spacing:      8px;
+}
+
+element {
+    background-color: @bg;
+    border-radius: 8px;
+    orientation:  vertical;
+    padding:      12px;
+    spacing:      6px;
+    children:     [element-icon, element-text];
+}
+
+element normal.normal {
+    background-color: @bg;
+    text-color: @fg;
+}
+
+element alternate.normal {
+    background-color: @bg;
+    text-color: @fg;
+}
+
+element selected {
+    background-color: @bg-alt;
+}
+
+element selected.normal {
+    background-color: @bg-alt;
+    text-color: @fg;
+}
+
+element-icon {
+    background-color: transparent;
+    size:         48px;
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+}
+
+element-text {
+    expand:           true;
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+    padding:          0;
+    color:            @fg;
+    font:             "JetBrainsMono Nerd Font Mono 8";
+}
