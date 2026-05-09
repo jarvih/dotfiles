@@ -5,7 +5,12 @@
     "spacing": 2,
 
     "modules-left":   ["sway/mode"],
-    "modules-center": ["sway/scratchpad", "sway/workspaces"],
+    "modules-center": ["group/center"],
+
+    "group/center": {
+        "orientation": "horizontal",
+        "modules": ["sway/scratchpad", "sway/workspaces"]
+    },
     "modules-right":  ["network", "pulseaudio", "battery", "clock", "tray"],
 
     "sway/workspaces": {
@@ -20,42 +25,44 @@
     },
 
     "sway/mode": {
-        "format": "⬡ {}"
+        "format": "󰣇 {}"
     },
 
     "clock": {
-        "format": "⏱ {:%d.%m. %H:%M}",
+        "format": "󰥔 {:%d.%m. %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
     },
 
     "battery": {
         "format": "{capacity}% {icon}",
-        "format-charging": "↑ {capacity}%",
-        "format-icons": ["▁", "▂", "▄", "▆", "█"],
+        "format-alt": "󰥔 {time}",
+        "format-charging": "󰂄 {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "states": {
             "warning": 30,
             "critical": 15
-        },
-        "tooltip-format": "{timeTo}"
+        }
     },
 
     "network": {
-        "format-wifi": "↝ {essid}",
-        "format-ethernet": "⇄ {ipaddr}",
-        "format-disconnected": "✗ disconnected",
+        "format-wifi": "󰤨 {essid}",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-disconnected": "󰤭 disconnected",
         "tooltip-format-wifi": "{ifname}: {ipaddr}/{cidr}\n{gwaddr} — {signaldBm}dBm",
         "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}"
     },
+
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": ["", ""],
+        "format-icons": ["󰘔", "󱂬"],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
+
     "pulseaudio": {
-        "format": "♪ {volume}%",
-        "format-muted": "✕ muted",
+        "format": "󰕾 {volume}%",
+        "format-muted": "󰖁 muted",
         "on-click": "pavucontrol"
     },
 

@@ -1,5 +1,5 @@
 * {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrainsMonoNerdFont", monospace;
     font-size: 13px;
     border: none;
     border-radius: 0;
@@ -11,11 +11,15 @@ window#waybar {
     color: #c0caf5;
 }
 
-#workspaces {
-    margin: 4 2px;
-    padding: 0 12px;
+#center {
+    margin: 4px 2px;
     border-radius: 6px;
     background: #292e42;
+}
+
+#workspaces {
+    padding: 0;
+    background: transparent;
 }
 
 #workspaces button {
@@ -41,7 +45,6 @@ window#waybar {
 
 #scratchpad.empty,
 #scratchpad {
-    margin: 4 2px;
     padding: 0 12px;
     border-radius: 6px;
     background: #f7768e;
