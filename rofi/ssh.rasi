@@ -1,0 +1,84 @@
+configuration {
+    modi: "ssh";
+    show-icons: false;
+    hide-scrollbar: true;
+    font:           "JetBrainsMono Nerd Font Mono 14";
+    display-ssh:    "SSH";
+}
+
+@import "~/.config/rofi/colors.rasi"
+
+* {
+    background-color: transparent;
+    text-color:   @foreground;
+}
+
+window {
+    background-color: @background;
+    border:       2px solid;
+    border-color: @highlight;
+    border-radius: 12px;
+    padding:      20px;
+    width:        520px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [inputbar, listview];
+    spacing: 12px;
+}
+
+inputbar {
+    background-color: @background-alt;
+    border-radius: 8px;
+    padding:      8px 12px;
+    children:     [prompt, entry];
+}
+
+prompt {
+    background-color: transparent;
+    padding:      0 8px 0 0;
+}
+
+entry {
+    background-color: transparent;
+    placeholder:  "Search hosts...";
+}
+
+listview {
+    background-color: transparent;
+    columns:      1;
+    lines:        10;
+    fixed-columns: true;
+    fixed-height: false;
+    spacing:      4px;
+}
+
+element {
+    background-color: @background;
+    border-radius: 8px;
+    padding:      10px 14px;
+    spacing:      6px;
+}
+
+element normal.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+element alternate.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+element selected.normal {
+    background-color: @background-alt;
+    text-color: @foreground;
+}
+
+element-text {
+    expand:           true;
+    horizontal-align: 0;
+    vertical-align:   0.5;
+    color:            @foreground;
+}
