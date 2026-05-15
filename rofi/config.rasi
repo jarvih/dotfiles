@@ -7,20 +7,17 @@ configuration {
     font:           "JetBrainsMono Nerd Font Mono 10";
 }
 
-* {
-    bg:           #1a1b2a;
-    bg-alt:       #22243a;
-    fg:           #a0a8cd;
-    accent:       #7199ee;
+@import "~/.config/rofi/colors.rasi"
 
+* {
     background-color: transparent;
-    text-color:   @fg;
+    text-color:   @foreground;
 }
 
 window {
-    background-color: @bg;
+    background-color: @background;
     border:       2px solid;
-    border-color: @accent;
+    border-color: @highlight;
     border-radius: 12px;
     padding:      20px;
     width:        720px;
@@ -33,7 +30,7 @@ mainbox {
 }
 
 inputbar {
-    background-color: @bg-alt;
+    background-color: @background-alt;
     border-radius: 8px;
     padding:      8px 12px;
     children:     [prompt, entry];
@@ -59,7 +56,7 @@ listview {
 }
 
 element {
-    background-color: @bg;
+    background-color: @background;
     border-radius: 8px;
     orientation:  vertical;
     padding:      12px;
@@ -68,22 +65,22 @@ element {
 }
 
 element normal.normal {
-    background-color: @bg;
-    text-color: @fg;
+    background-color: @background;
+    text-color: @foreground;
 }
 
 element alternate.normal {
-    background-color: @bg;
-    text-color: @fg;
+    background-color: @background;
+    text-color: @foreground;
 }
 
 element selected {
-    background-color: @bg-alt;
+    background-color: @background-alt;
 }
 
 element selected.normal {
-    background-color: @bg-alt;
-    text-color: @fg;
+    background-color: @background-alt;
+    text-color: @foreground;
 }
 
 element-icon {
@@ -98,6 +95,6 @@ element-text {
     horizontal-align: 0.5;
     vertical-align:   0.5;
     padding:          0;
-    color:            @fg;
+    color:            @foreground;
     font:             "JetBrainsMono Nerd Font Mono 8";
 }
