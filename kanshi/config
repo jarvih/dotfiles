@@ -1,0 +1,13 @@
+profile external {
+    output DP-1 mode 3840x2160@60Hz enable scale 1.25
+    output eDP-1 disable
+}
+
+profile external2 {
+    output DP-3 mode 3840x2160@60Hz enable scale 1.25
+    output eDP-1 disable
+}
+
+profile laptop {
+    output eDP-1 mode 1920x1200@60Hz enable
+}
