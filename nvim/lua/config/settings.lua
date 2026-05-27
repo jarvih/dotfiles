@@ -25,3 +25,21 @@ vim.opt.scrolloff = 8
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = false
+
+-- Use system clipboard by default (equivalent to: set clipboard=unnamedplus)
+vim.opt.clipboard = "unnamedplus"
+
+-- Wayland clipboard provider using wl-clipboard
+vim.g.clipboard = {
+  name = "wl-clipboard",
+  copy = {
+    ["+"] = "wl-copy",
+    ["*"] = "wl-copy",
+  },
+  paste = {
+    ["+"] = "wl-paste --no-newline",
+    ["*"] = "wl-paste --no-newline",
+  },
+  cache_enabled = 0,
+}
+
