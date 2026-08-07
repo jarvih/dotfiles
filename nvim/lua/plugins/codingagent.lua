@@ -81,7 +81,7 @@ return {
     },
     config = function(_, opts)
       require("claudecode").setup(opts)
-      setup_auto_open("CLAUDE.md", "ClaudeCode")
+      -- setup_auto_open("CLAUDE.md", "ClaudeCode")
       setup_quit_with_panel()
     end,
   },
@@ -101,7 +101,7 @@ return {
     },
     config = function(_, opts)
       require("opencode").setup(opts)
-      setup_auto_open({"CLAUDE.md", "AGENT.md"}, "Opencode")
+      -- setup_auto_open({"CLAUDE.md", "AGENT.md"}, "Opencode")
       setup_quit_with_panel()
     end,
   },
