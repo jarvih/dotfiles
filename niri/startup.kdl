@@ -15,7 +15,8 @@
 // portable rather than hardcoding /var/home/jahe.
 spawn-sh-at-startup "swaybg -i $HOME/.cache/wallpaper.jpg -m fill"
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
+// waybar. One shared config.jsonc holds both the sway and the niri modules;
+// each compositor silently skips the modules that are not its own.
 spawn-at-startup "waybar"
 
 // Idle handling: lock after 5 min, blank after 6 min, suspend after 16 min.

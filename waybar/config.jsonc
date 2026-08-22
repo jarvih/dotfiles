@@ -9,7 +9,7 @@
 
     "group/center": {
         "orientation": "horizontal",
-        "modules": ["sway/scratchpad", "sway/workspaces"]
+        "modules": ["sway/scratchpad", "sway/workspaces", "niri/workspaces"]
     },
     "modules-right":  ["network", "pulseaudio", "battery", "clock", "tray"],
 
@@ -22,6 +22,12 @@
             "3": [],
             "4": [],
         }
+    },
+
+    "niri/workspaces": {
+        // {value} is the workspace name, or its index when unnamed.
+        "format": "{value}",
+        "all-outputs": true
     },
 
     "sway/mode": {
