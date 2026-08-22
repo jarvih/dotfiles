@@ -1,0 +1,33 @@
+// Processes spawned when niri starts.
+// Included from config.kdl.
+//
+// Note that running niri as a session supports xdg-desktop-autostart,
+// which may be more convenient for anything that ships a .desktop file.
+//
+// spawn-at-startup takes each argument as its own KDL string and does not go
+// through a shell. For pipes, variables or multiple commands, use
+// spawn-sh-at-startup "…" instead, which passes the whole string to sh -c.
+
+// Wallpaper. Ported from sway's `output * bg $HOME/.cache/wallpaper.jpg fill`:
+// niri has no built-in background, so a layer-shell client draws it instead.
+// swaybg's -m modes are the same names sway used, so "fill" behaves identically.
+// Uses spawn-sh-at-startup so $HOME is expanded by the shell, keeping the path
+// portable rather than hardcoding /var/home/jahe.
+spawn-sh-at-startup "swaybg -i $HOME/.cache/wallpaper.jpg -m fill"
+
+// This line starts waybar, a commonly used bar for Wayland compositors.
+spawn-at-startup "waybar"
+
+// Idle handling: lock after 5 min, blank after 6 min, suspend after 16 min.
+// swayidle runs each of its own commands via sh -c, so the pipes and $USER
+// below are expanded there rather than by niri.
+// There is no swaymsg under niri, use `niri msg action` instead. Monitors power
+// back on by themselves on any input, so no resume commands are needed.
+spawn-at-startup "swayidle" "-w" \
+    "timeout" "60"   "pgrep -xu $USER swaylock >/dev/null && niri msg action power-off-monitors" \
+    "timeout" "300"  "pgrep -xu $USER swaylock >/dev/null || swaylock -f" \
+    "timeout" "360"  "niri msg action power-off-monitors" \
+    "timeout" "960"  "systemctl suspend" \
+    "before-sleep" "pgrep -xu $USER swaylock >/dev/null || swaylock -f" \
+    "lock" "pgrep -xu $USER swaylock >/dev/null || swaylock -f" \
+    "unlock" "pkill -xu $USER -SIGUSR1 swaylock"

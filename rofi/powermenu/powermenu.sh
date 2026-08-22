@@ -23,7 +23,15 @@ run_cmd() {
 			--reboot) systemctl reboot ;;
 			--suspend) systemctl suspend ;;
 			--hibernate) systemctl hibernate ;;
-			--logout) swaymsg exit ;;
+			# This menu is shared by sway and niri, so ask whichever one is running.
+			# Both already confirmed above, so skip niri's own Enter prompt.
+			--logout)
+				if [[ -n "$NIRI_SOCKET" ]]; then
+					niri msg action quit --skip-confirmation
+				else
+					swaymsg exit
+				fi
+				;;
 		esac
 	fi
 }
