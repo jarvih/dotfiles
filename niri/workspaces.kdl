@@ -1,0 +1,14 @@
+// Named workspaces. Included from config.kdl.
+//
+// Declaring them here makes them always exist, in this order, even when empty.
+// That is the closest niri equivalent of sway's persistent-workspaces, and the
+// waybar niri/workspaces module shows the name instead of the index for these.
+//
+// The existing Mod+1..Mod+9 binds still work: these take indices 1-4 in the
+// order listed, so Mod+1 focuses "term", Mod+2 "web", and so on. niri also
+// keeps one empty unnamed workspace after the last one, which is normal.
+//
+// Names can also be changed at runtime with Mod+N, which does not persist.
+workspace "web"
+workspace "term"
+workspace "misc"

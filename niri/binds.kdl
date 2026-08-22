@@ -195,6 +195,11 @@ binds {
     // Switches focus between the current and the previous workspace.
     Mod+Tab { focus-workspace-previous; }
 
+    // Rename the focused workspace via a rofi prompt. Runtime names are not
+    // persistent; the ones declared in workspaces.kdl come back on restart.
+    Mod+N hotkey-overlay-title="Rename Workspace" { spawn-sh "n=$(rofi -dmenu -p 'Rename workspace'); [ -n \"$n\" ] && niri msg action set-workspace-name \"$n\""; }
+    Mod+Shift+N hotkey-overlay-title="Clear Workspace Name" { unset-workspace-name; }
+
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.

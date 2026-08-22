@@ -5,6 +5,7 @@
 
 // Split-out parts of this config. Paths are relative to this file, and niri
 // watches included files too, so live-reload works when editing them.
+include "workspaces.kdl"
 include "startup.kdl"
 include "binds.kdl"
 include "window-rules.kdl"
