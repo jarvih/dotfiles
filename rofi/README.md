@@ -69,5 +69,7 @@ Enter prompt would be a second confirmation for the same action.
 ## Usage
 
 `~/.config/rofi` is symlinked to this folder. Note that sway invokes the
-launcher through a `$rofi_cmd` variable that is not defined in these dotfiles;
-it comes from the distro-provided sway config.
+launcher through a `$rofi_cmd` variable that is not defined in these dotfiles:
+Fedora's `/etc/sway/config` sets it to `rofi -terminal '$term'`, and includes
+`~/.config/sway/config.d/*.conf` further down, so the definition is in scope by
+the time the binds here are read.
