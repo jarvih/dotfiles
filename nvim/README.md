@@ -81,6 +81,17 @@ to the quickfix list.
 | `M-l`, `M-]`, `M-[` | Accept / next / previous Copilot suggestion |
 | `af` / `if` | Treesitter textobject: around / inside a function |
 
+### Completion menu
+
+| Key | Action |
+|-----|--------|
+| `<Tab>` | Select the next item when the menu is open, otherwise fall through |
+| `<CR>` | Confirm the selected item |
+| `<C-y>` | Confirm, selecting the first item if none is selected |
+| `<C-Space>` | Open the menu |
+| `<C-n>` / `<C-p>` | Next / previous item |
+| `<C-f>` / `<C-u>` | Scroll the documentation window |
+
 ## Plugins
 
 | File | Plugin | Notes |
@@ -91,7 +102,7 @@ to the quickfix list.
 | `harpoon.lua` | harpoon2 | Per-cwd file list, with a Telescope view |
 | `treesitter.lua` | nvim-treesitter | Highlight, indent, autotag, function textobjects; parsers auto-install |
 | `lsp.lua` | nvim-lspconfig + mason + conform + fidget | See below |
-| `completion.lua` | nvim-cmp | Lazy-loaded on `InsertEnter` |
+| `completion.lua` | nvim-cmp + LuaSnip | Lazy-loaded on `InsertEnter`, owns the whole cmp setup |
 | `copilot.lua` | copilot.lua | Inline suggestions, panel disabled, enabled for markdown and help |
 | `codingagent.lua` | claudecode.nvim / opencode.nvim | See below |
 | `markview.lua` | markview.nvim | Inline markdown rendering with hybrid mode in normal mode |
@@ -114,11 +125,8 @@ Diagnostics use `virtual_lines` with a rounded float. Two Copilot workarounds
 live here: `window/showMessage` from the copilot client is dropped, and the
 "Client copilot quit with exit code 143" notification is filtered out.
 
-Note that nvim-cmp is configured in **both** `lsp.lua` and `completion.lua`.
-`completion.lua` is lazy-loaded on `InsertEnter`, so its mapping set (`Tab` to
-select, `CR` to confirm) is normally the one that ends up active, while the
-`lsp.lua` block (`C-y` to confirm, copilot as a cmp source) is overwritten.
-Worth collapsing into one file at some point.
+`lsp.lua` builds the client capabilities from `cmp-nvim-lsp` but does not
+configure the completion menu itself — that lives entirely in `completion.lua`.
 
 ### Coding agent
 
