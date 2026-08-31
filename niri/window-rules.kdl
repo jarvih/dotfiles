@@ -52,9 +52,10 @@ window-rule {
     clip-to-geometry true
 }
 
-// Make bitwarden open as a floating window, since it is a small utility window.
+// Make password managers open as floating windows, since they are small utility windows.
 window-rule {
     match app-id="^bitwarden$"
+    match app-id="^org.keepassxc.KeePassXC$"
     open-floating true
     default-column-width { fixed 1200; }
     default-window-height { fixed 900; }
