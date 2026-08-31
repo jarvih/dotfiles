@@ -51,3 +51,12 @@ window-rule {
     geometry-corner-radius 3
     clip-to-geometry true
 }
+
+// Make bitwarden open as a floating window, since it is a small utility window.
+window-rule {
+    match app-id="^bitwarden$"
+    open-floating true
+    default-column-width { fixed 1200; }
+    default-window-height { fixed 900; }
+}
+
