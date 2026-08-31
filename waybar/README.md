@@ -10,7 +10,7 @@ are not its own, so no per-compositor copy is needed.
 | `config.jsonc` | Bar geometry and module configuration     |
 | `style.css`    | GTK stylesheet (Tokyo Dark palette)       |
 
-Under niri the bar is spawned from `../niri/startup.kdl`.
+Neither compositor spawns the bar; it runs from the `waybar.service` user unit.
 
 ## Bar
 
@@ -59,3 +59,8 @@ running compositor provides.
 ## Usage
 
 `~/.config/waybar` is a symlink to this folder.
+
+Run the bar from the `waybar.service` user unit rather than by hand: waybar
+aborts on every dock and undock (its battery module trips over the power supply
+nodes the dock adds and removes), so it needs systemd to restart it. The
+`Restart=always` drop-in lives in `~/.config/systemd/user/waybar.service.d/`.

@@ -35,6 +35,8 @@ Personal sway configuration on Fedora Sway Atomic.
 - **Bar**: Waybar at the bottom
   - Workspaces 1–4 always visible, scratchpad indicator
   - Modules: mode · scratchpad · workspaces · network · audio · battery · clock · tray
+  - `config.d/90-bar.conf` empties the distro `bar` block so sway does not spawn
+    its own waybar, see [`../waybar/README.md`](../waybar/README.md)
 
 ## Window rules
 

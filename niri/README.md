@@ -104,11 +104,12 @@ and the declared ones come back on restart.
 
 - `swaybg` — wallpaper from `~/.cache/wallpaper.jpg`, `fill` mode (niri has no
   built-in background)
-- `waybar` — one shared `config.jsonc` holds both the sway and niri modules;
-  each compositor skips the modules that are not its own
 - `swayidle` — lock after 5 min, blank after 6 min, suspend after 16 min; also
   blanks after 1 min when already locked. Uses `niri msg action
   power-off-monitors`, since there is no `swaymsg` here
+
+Waybar is not spawned here; it runs from the `waybar.service` user unit, see
+[`../waybar/README.md`](../waybar/README.md).
 
 Running niri as a session also supports xdg-desktop-autostart, which is easier
 for anything shipping a `.desktop` file.

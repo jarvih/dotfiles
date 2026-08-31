@@ -15,9 +15,8 @@
 // portable rather than hardcoding /var/home/jahe.
 spawn-sh-at-startup "swaybg -i $HOME/.cache/wallpaper.jpg -m fill"
 
-// waybar. One shared config.jsonc holds both the sway and the niri modules;
-// each compositor silently skips the modules that are not its own.
-spawn-at-startup "waybar"
+// waybar is not spawned here. It runs from the waybar.service user unit, so
+// that systemd restarts it when it crashes on docking. See ../waybar/README.md.
 
 // Idle handling: lock after 5 min, blank after 6 min, suspend after 16 min.
 // swayidle runs each of its own commands via sh -c, so the pipes and $USER
