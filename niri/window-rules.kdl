@@ -53,9 +53,13 @@ window-rule {
 }
 
 // Make password managers open as floating windows, since they are small utility windows.
+// The last two matches are the Bitwarden Edge extension popup: the exact app-id,
+// plus a fallback in case the extension id or Edge profile changes.
 window-rule {
     match app-id="^bitwarden$"
     match app-id="^org.keepassxc.KeePassXC$"
+    match app-id="^msedge-jbkfoedolllekgbhcbcoahefnbanhhlh-Default$"
+    match app-id="^msedge-" title="^Bitwarden$"
     open-floating true
     default-column-width { fixed 1200; }
     default-window-height { fixed 900; }
