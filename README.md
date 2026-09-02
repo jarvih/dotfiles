@@ -13,6 +13,7 @@ one bar, one launcher and one Tokyo Dark palette.
 | [`niri/`](niri/README.md)     | Niri compositor: per-topic KDL files included from `config.kdl` |
 | [`waybar/`](waybar/README.md) | Waybar status bar, shared by both compositors                |
 | [`rofi/`](rofi/README.md)     | Rofi launcher, SSH menu and power menu                       |
+| [`foot/`](foot/README.md)     | Foot terminal, spawned by both compositors                   |
 | [`kanshi/`](kanshi/README.md) | Output profiles for docked and undocked use                  |
 
 Every folder has its own `README.md` with the details.
