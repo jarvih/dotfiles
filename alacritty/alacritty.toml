@@ -1,0 +1,11 @@
+[font]
+size = 12
+
+[font.normal]
+family = "monospace"
+
+[window]
+# Absorb the leftover pixels as padding instead of snapping the window to
+# whole character cells
+dynamic_padding = true
+padding = { x = 0, y = 0 }

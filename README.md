@@ -14,6 +14,7 @@ one bar, one launcher and one Tokyo Dark palette.
 | [`waybar/`](waybar/README.md) | Waybar status bar, shared by both compositors                |
 | [`rofi/`](rofi/README.md)     | Rofi launcher, SSH menu and power menu                       |
 | [`foot/`](foot/README.md)     | Foot terminal, spawned by both compositors                   |
+| [`alacritty/`](alacritty/README.md) | Alacritty terminal, spawned by niri                   |
 | [`kanshi/`](kanshi/README.md) | Output profiles for docked and undocked use                  |
 
 Every folder has its own `README.md` with the details.
