@@ -17,8 +17,8 @@ binds {
     Mod+Shift+Escape { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+shift+return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-    Mod+return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot" "toolbox" "enter"; }
+    Mod+shift+return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty" "-e" "toolbox" "enter"; }
     Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
