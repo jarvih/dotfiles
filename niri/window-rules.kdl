@@ -72,3 +72,12 @@ window-rule {
     default-column-width { fixed 800; }
     default-window-height { fixed 600; }
 }
+
+// Make Blueman and PulseAudio Volume Control open as floating windows, since they are small utility windows.
+window-rule {
+    match app-id="blueman-manage"
+    match app-id="org.pulseaudio.pavucontrol"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 600; }
+}
