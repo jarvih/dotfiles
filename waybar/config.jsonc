@@ -36,7 +36,20 @@
 
     "clock": {
         "format": "󰥔 {:%d.%m. %H:%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
+        "tooltip-format": "<span size='large'><big>{:%Y %B}</big>\n<tt>{calendar}</tt></span>",
+        "calendar": {
+            "mode-mon-col": 4,
+            "weeks-pos": "left",
+            "format": {
+                "weeks": "<span color='#95d3af'><b>{:%V}</b></span>",
+                "today": "<span color='#ffcc66'><big><b>{}</b></big></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
     },
 
     "battery": {
