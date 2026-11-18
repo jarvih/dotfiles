@@ -278,4 +278,7 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+
+    // Mirror the focused output to all other outputs. Useful for presentations. 
+    Mod+Ctrl+E repeat=false { spawn-sh "wl-mirror $(niri msg -j focused-output | jq -r .name)"; }
 }
