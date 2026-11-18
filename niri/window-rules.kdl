@@ -41,6 +41,23 @@ window-rule {
     open-maximized true
 }
 
+// Teams and outlook PWA window opens as a 40% wide column.
+window-rule {
+    match app-id="^msedge-ompifgpmddkgmclendfeacglnodjjndh-Default$"
+    match app-id="^msedge-faolnafnngnfdaknnbpnkhgohbobgegn-Default$"
+    default-column-width { proportion 0.4; }
+}
+
+// The Teams call popup (shown when leaving the call view, e.g. to open a chat)
+// gets the plain Edge app-id instead of the Teams PWA one, so the rule above
+// would maximize it. Float it in the corner instead, like GNOME does.
+window-rule {
+    match app-id="^microsoft-edge$" title="^Microsoft Teams \\(PWA\\)$"
+    open-maximized false
+    open-floating true
+    default-floating-position x=32 y=32 relative-to="bottom-right"
+}
+
 window-rule {
     match app-id="^$" title="^$"
     open-floating true
