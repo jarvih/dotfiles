@@ -250,5 +250,5 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     // Mirror the focused output to all other outputs. Useful for presentations. 
-    Mod+Ctrl+E repeat=false { spawn-sh "wl-mirror $(niri msg -j focused-output | jq -r .name)"; }
+    Mod+Ctrl+E repeat=false { spawn-sh "wl-mirror -F $(niri msg -j focused-output | jq -r .name)"; }
 }
